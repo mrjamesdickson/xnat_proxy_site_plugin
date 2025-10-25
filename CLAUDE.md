@@ -85,3 +85,56 @@ Test dependencies include JUnit, Mockito, Spring Test, and H2 database.
 - JaCoCo coverage reports generated in `build/jacocoHtml`
 - Generated XNAT sources expected in `build/xnat-generated/src/main/java`
 - Maven repositories: XNAT JFrog (libs-release, libs-snapshot), Maven Central
+
+## Git Workflow - IMPORTANT
+
+This project uses a **Git submodule** (`xnat_proxy_site/`) for the React frontend. Always check and commit BOTH repositories.
+
+### Before Committing - Check Both Repos
+
+```bash
+# Check main plugin repo
+git status
+
+# Check submodule status
+cd xnat_proxy_site && git status && cd ..
+```
+
+### Committing Changes - ALWAYS Follow This Order
+
+**1. First: Commit and push the submodule**
+```bash
+cd xnat_proxy_site
+git add -A
+git commit -m "Your commit message"
+git push origin main
+cd ..
+```
+
+**2. Second: Update submodule reference in parent repo**
+```bash
+git add xnat_proxy_site
+git commit -m "Update xnat_proxy_site submodule reference"
+git push origin main
+```
+
+**3. If you also have plugin changes, commit those too**
+```bash
+git add -A
+git commit -m "Your plugin changes"
+git push origin main
+```
+
+### Why This Order Matters
+
+The parent repo stores a reference to a specific commit hash in the submodule. If you:
+- Commit parent first → the submodule reference will be wrong (pointing to uncommitted changes)
+- Commit submodule first → the parent can reference the correct pushed commit
+
+### Quick Check Script
+
+```bash
+# Run this to verify both repos are clean
+echo "=== Main repo ===" && git status --short
+echo "=== Submodule ===" && cd xnat_proxy_site && git status --short && cd ..
+```
