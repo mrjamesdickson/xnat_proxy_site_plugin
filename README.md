@@ -43,7 +43,7 @@ The artifact will be located at `build/libs/morpheus-plugin-1.0.0-fat.jar`.
 │   └── exceptions/      # Custom exception types
 ├── src/main/resources/
 │   ├── META-INF/resources/morpheus/  # React frontend build
-│   ├── schemas/xnatdx/               # XNAT data model schemas
+│   ├── schemas/morpheus/             # XNAT data model schemas
 │   ├── json/                         # Configuration files
 │   └── config/roles/                 # Role definitions
 ├── xnat_proxy_site/     # React TypeScript frontend source

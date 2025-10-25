@@ -41,7 +41,7 @@ The React TypeScript application is bundled in `src/main/resources/META-INF/reso
 
 ### Data Model
 
-Custom XNAT schema defined in `src/main/resources/schemas/xnatdx/genericQCAssessor.xsd`:
+Custom XNAT schema defined in `src/main/resources/schemas/morpheus/genericQCAssessor.xsd`:
 - Defines the `morpheus:qcGenericAssessorData` data type
 - Used for quality control assessment data
 - Integrates with XNAT's data model framework
