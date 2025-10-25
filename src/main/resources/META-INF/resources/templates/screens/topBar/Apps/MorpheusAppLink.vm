@@ -1,1 +1,2 @@
 <li><a href="/morpheus/">Morpheus</a></li>
+<li><a href="/morpheus/?popup=true#/upload/compressed" onclick="window.open(this.href, 'morpheus-uploader', 'width=1200,height=800,scrollbars=yes,resizable=yes'); return false;">Compressed Uploader</a></li>
