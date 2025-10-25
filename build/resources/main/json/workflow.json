@@ -1,0 +1,82 @@
+{
+  "test1": {
+    "status": [
+      {
+        "key": "Transferred",
+        "status": "Complete",
+        "value": "Images available - DICOM uploaded",
+        "notify":"assignee"
+      },
+      {
+        "key": "simpleware_segmentation",
+        "status": "Complete",
+        "value": "Images available - DICOM uploaded with Auto Segmenter results",
+        "notify":"assignee"
+      },
+      {
+        "key": "Engineer assigned (manual segmentation in progress)",
+        "status": "Complete",
+        "value": "Engineer assigned (manual segmentation in progress)",
+        "notify":"assignee"
+      },
+      {
+        "key": "Ready for review (clinician)",
+        "status": "Complete",
+        "value": "Ready for review (clinician)",
+        "notify":"reviewer"
+      },
+      {
+        "key": "Modified Manual QC Pass",
+        "status": "Complete",
+        "value": "Review complete - Approved",
+        "notify":"assignee"
+      },
+      {
+        "key": "Modified Manual QC Fail",
+        "status": "Complete",
+        "value": "Review complete - Needs further work",
+        "notify":"assignee"
+      },
+      {
+        "key": "Ready to print",
+        "status": "Complete",
+        "value": "Ready to print",
+        "notify":"assignee"
+      }
+    ]
+  },
+  "cirrus": {
+    "status": [
+      {
+        "key": "Transferred",
+        "status": "Complete",
+        "value": "Images available - DICOM uploaded",
+        "notify":"assignee"
+      },
+      {
+        "key": "cirrus",
+        "status": "Complete",
+        "value": "Images available - DICOM uploaded with Cirrus Results",
+        "notify":"assignee"
+      },
+      {
+        "key": "Modified Manual QC Pass",
+        "status": "Complete",
+        "value": "Review complete - Approved",
+        "notify":"assignee"
+      },
+      {
+        "key": "Modified Manual QC Fail",
+        "status": "Complete",
+        "value": "Review complete - Needs further work",
+        "notify":"all"
+      },
+      {
+        "key": "Ready",
+        "status": "Complete",
+        "value": "Ready",
+        "notify":"assignee"
+      }
+    ]
+  }
+}

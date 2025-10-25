@@ -1,0 +1,212 @@
+/*
+ * build.gradle
+ * Copyright (c) 2019, Radiologics Inc
+ * All Rights Reserved
+ */
+
+
+
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: "io.franzbecker.gradle-lombok"
+apply plugin: 'net.linguica.maven-settings'
+
+def pluginVersion = '1.0.0'
+def vSpringSecurity = '4.2.6.RELEASE'
+def vMockito = '2.23.0'
+buildscript {
+    ext {
+        vXnat    = "1.8.4"
+    }
+    repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
+        mavenLocal()
+        maven { url "https://nrgxnat.jfrog.io/nrgxnat/libs-release" }
+        maven { url "https://nrgxnat.jfrog.io/nrgxnat/libs-snapshot" }
+        mavenCentral()
+    }
+    dependencies {
+		classpath "io.franzbecker:gradle-lombok:1.11"
+        classpath "org.hibernate:hibernate-validator:6.0.3.Final"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE"
+        classpath "org.apache.maven.plugins:maven-resources-plugin:2.5"
+        classpath "org.apache.maven.plugins:maven-compiler-plugin:3.7.0"
+        classpath "org.apache.maven.plugins:maven-surefire-plugin:2.20.1"
+        classpath "org.apache.maven.plugins:maven-antrun-plugin:1.8"
+        classpath "org.apache.maven.plugins:maven-jar-plugin:3.0.2"
+        classpath "javax.validation:validation-api:2.0.0.Final"
+        classpath "net.linguica.gradle:maven-settings-plugin:0.5"          
+    }
+}
+
+
+group 'com.radiologics.xnatdx'
+version pluginVersion
+
+repositories {
+    maven { url "https://plugins.gradle.org/m2/" }
+    mavenLocal()
+    maven { url "https://nrgxnat.jfrog.io/nrgxnat/libs-release" }
+    maven { url "https://nrgxnat.jfrog.io/nrgxnat/libs-snapshot" }
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+compileJava {
+    options.fork = false
+}
+
+jacoco {
+    toolVersion = "0.7.9"
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.enabled = false
+        csv.enabled = false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            srcDir 'build/xnat-generated/src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+            srcDir 'build/xnat-generated/src/main/resources'
+        }
+    }
+}
+
+configurations {
+    all*.exclude group: 'edu.ucar', module: 'netcdf'
+    all*.exclude group: 'jakarta-regexp'
+    all*.exclude group: 'net.sf.saxon', module: 'Saxon-B'
+    all*.exclude group: 'org.apache.geronimo.specs'
+    all*.exclude module: 'pipelineCNDAXNAT'
+    all*.exclude group: 'jamon'
+	all*.exclude group: '', module: 'servlet-api'
+    all*.exclude group: 'javax.sql', module: 'jdbc-stdext'
+    all*.exclude group: 'javax.transaction', module: 'jta'
+    compile.extendsFrom(compileAndInclude)
+}
+
+dependencyManagement.imports {
+    mavenBom "org.nrg:parent:${vXnat}"
+}
+
+dependencies {
+	compileOnly "org.slf4j:slf4j-api"
+	compileOnly "log4j:log4j"
+    compileOnly 'javax.servlet:servlet-api:2.4'
+    compileOnly 'geronimo-spec:geronimo-spec-jms:1.1-rc4'
+    compileOnly 'velocity:velocity:1.5'
+    compileOnly 'org.hibernate:hibernate-core:4.3.11.Final'
+    compileOnly 'com.google.guava:guava:20.0'
+    compileOnly 'commons-lang:commons-lang:2.6'
+    compileOnly 'com.fasterxml.jackson.core:jackson-core:2.6.5'
+    compileOnly 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final'
+    compileOnly 'javax.jms:javax.jms-api:2.0.1'
+    compileOnly 'javax.inject:javax.inject:1'
+    compileOnly 'org.restlet:org.restlet:1.1.10'
+    compileOnly 'org.sonatype.sisu:sisu-inject-bean:1.4.2'
+    compileOnly 'com.fasterxml.jackson.core:jackson-annotations:2.6.5'
+    compileOnly 'com.fasterxml.jackson.core:jackson-databind:2.6.5'
+    compileOnly 'org.nrg:mail:1.7.5'
+    compileOnly "org.nrg.xnat:web:1.7.5"
+    compileOnly "javax.validation:validation-api:2.0.0.Final"
+    compileOnly "org.nrg:dicomtools"
+    compileOnly "org.nrg:dicom-xnat-util"
+    compileOnly "org.nrg.dicom:dicom-edit4"
+    compileOnly 'org.nrg.dicom:dicom-edit6'
+    compileOnly "org.nrg.xnat:xnat-data-models"
+    compileOnly "org.nrg.xdat:core"
+    annotationProcessor("org.nrg:framework")
+    compileOnly("org.nrg:framework")
+    compileOnly "org.nrg:config" 
+    compileOnly "javax.servlet:javax.servlet-api"
+    compileOnly 'org.apache.xmlbeans:xmlbeans-xpath'
+    compileOnly "turbine:turbine"
+    compileOnly "org.apache.velocity:velocity"
+    compileOnly "org.springframework:spring-beans"
+    compileOnly "org.springframework:spring-context"
+    compileOnly "org.springframework:spring-jms"
+    compileOnly "org.springframework:spring-tx"
+    compileOnly "org.springframework.security:spring-security-acl"
+    compileOnly "org.springframework.security:spring-security-aspects"
+    compileOnly "org.springframework.security:spring-security-config"
+    compileOnly "org.springframework.security:spring-security-taglibs"
+    compileOnly 'org.springframework:spring-web'
+    compileOnly "io.springfox:springfox-swagger2"
+    compileOnly "io.springfox:springfox-swagger-ui"
+    compileOnly 'dcm4che.tool:dcm4che-tool-dcmecho:2.0.29'
+    compileOnly 'dcm4che.tool:dcm4che-tool-dcmqr:2.0.29'
+    compileOnly "dcm4che:dcm4che-core:2.0.29"
+    compileOnly 'dcm4che:dcm4che-imageio:2.0.29'
+    compileOnly 'dcm4che:dcm4che-imageio-rle:2.0.29'
+    compileOnly "dcm4che:dcm4che-net:2.0.29"
+    compileOnly 'org.apache.activemq:activemq-core:5.7.0'
+    compileOnly 'org.apache.geronimo.specs:geronimo-jms_1.1_spec:1.1.1'
+    compileOnly 'org.apache.geronimo.specs:geronimo-j2ee-management_1.1_spec:1.0.1'
+    compileOnly 'org.apache.activemq:kahadb:5.7.0'
+
+	
+	testCompile group: 'junit', name: 'junit'
+	testCompile "org.springframework:spring-test"
+	testCompile "org.springframework.security:spring-security-test:${vSpringSecurity}"
+	testCompile "org.springframework.security:spring-security-config"
+	testCompile "org.mockito:mockito-core:${vMockito}"
+	testCompile "javax.servlet:javax.servlet-api"
+	testCompile "com.h2database:h2"
+	testCompile "org.springframework:spring-jdbc"
+	testCompile "org.springframework:spring-orm"
+	testCompile "org.json:json"
+	testCompile "org.apache.commons:commons-dbcp2"
+	testCompile group: 'org.apache.axis', name: 'axis', version: '1.4'
+
+	
+}
+
+
+
+task fatJar(type: Jar) {
+    zip64 true
+    classifier = "fat"
+    from {
+        configurations.compileAndInclude.collect { it.isDirectory() ? it : zipTree(it) }
+    } {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+    with jar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+            artifact fatJar
+        }
+    }
+    repositories{ 
+        maven {
+            name "Radiologics"
+            def releasesRepoUrl =  "https://maven.dev.radiologics.com/repository/internal/"
+            def snapshotsRepoUrl = "https://maven.dev.radiologics.com/repository/snapshots/"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl            
+        }
+    }
+}

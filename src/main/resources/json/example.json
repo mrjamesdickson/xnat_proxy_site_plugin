@@ -1,0 +1,108 @@
+{
+	"title": "Quality Control",
+	"header": "Quality Control sub header",
+	"sections":[
+	{"section": 
+		{
+			"title":"BOLD Scans",
+			"header":"registration sub title",
+			"datatable":{
+				"columns":[
+				    {"title":"Label one", "field":"label"},
+				    {"title":"Label Two", "field":"label2"}
+				  ],
+				  "rows":[
+					  {"label":"value","label2":"value"},
+			    	  {"label":"value","label2":"value"},
+					  {"label":"value","label2":"value"},
+					  {"label":"value","label2":"value"}
+				]
+			},
+	        "images": [
+	           {"id": "mpr_on_atlas","@url": "resources/DATA/files/QC/test1_MR_V1_mpr.gif","title": "MPRAGE on atlas (mosaic)"},
+	           {"id": "mpr_on_atlas","@url": "resources/DATA/files/QC/test1_MR_V1_mpr.gif","title": "MPRAGE on atlas (mosaic)"},
+	           {"id": "mpr_on_atlas","@url": "resources/DATA/files/QC/test1_MR_V1_mpr.gif","title": "MPRAGE on atlas (mosaic)"},
+	           {"id": "mpr_on_atlas","@url": "resources/DATA/files/QC/test1_MR_V1_mpr.gif","title": "MPRAGE on atlas (mosaic)"},
+	           {"id": "mpr_on_atlas","@url": "resources/DATA/files/QC/test1_MR_V1_mpr.gif","title": "MPRAGE on atlas (mosaic)"}
+			   ],
+		   	"sections":[
+				{
+					"section": 
+		   			{
+		   			"title":"BOLD Scans",
+		   			"header":"registration sub title",
+		   			"datatable":{
+		   				"columns":[
+		   				    {"title":"Label one", "field":"label"},
+		   				    {"title":"Label Two", "field":"label2"}
+		   				  ],
+		   				  "rows":[
+		   					  {"label":"value","label2":"value"},
+		   			    	  {"label":"value","label2":"value"},
+		   					  {"label":"value","label2":"value"},
+		   					  {"label":"value","label2":"value"}
+		   				]
+		   			},
+		   	        "images": [
+		   	           {"id": "mpr_on_atlas","url": "resources/DATA/files/QC/test1_MR_V1_mpr.gif","title": "MPRAGE on atlas (mosaic)"},
+		   	           {"id": "mpr_on_atlas","url": "resources/DATA/files/QC/test1_MR_V1_mpr.gif","title": "MPRAGE on atlas (mosaic)"},
+		   	           {"id": "mpr_on_atlas","url": "resources/DATA/files/QC/test1_MR_V1_mpr.gif","title": "MPRAGE on atlas (mosaic)"},
+		   	           {"id": "mpr_on_atlas","url": "resources/DATA/files/QC/test1_MR_V1_mpr.gif","title": "MPRAGE on atlas (mosaic)"},
+		   	           {"id": "mpr_on_atlas","url": "resources/DATA/files/QC/test1_MR_V1_mpr.gif","title": "MPRAGE on atlas (mosaic)"}
+		   			   ]
+		     		}
+				}
+  		 ]
+}
+},
+{"section": {
+		"title":"fcMRI_preprocessing",
+		"header":"registration sub title",
+		"datatable":{
+			"columns":[
+			    {"title":"Label one", "field":"label"},
+			    {"title":"Label Two", "field":"label2"}
+			  ],
+			  "rows":[
+				  {"label":"value","label2":"value"},
+		    	  {"label":"value","label2":"value"},
+				  {"label":"value","label2":"value"},
+				  {"label":"value","label2":"value"}
+			]
+		},
+        "images": [
+           {"id": "pre_fcMRI_SD","url": "resources/DATA/files/QC/test1_MR_V1_sd1.gif","title": "Pre-fcMRI preprocessing SD"},
+           {"id": "post_fcMRI_SD","url": "resources/DATA/files/QC/test1_MR_V1_resid_sd1.gif","title": "Post-fcMRI preprocessing SD"},
+           {"id": "pre_fcMRI_DVARS","url": "resources/DATA/files/QC/test1_MR_V1_resid_sd1.gif","title": "Pre-fcMRI preprocessing DVARS"},
+           {"id": "post_fcMRI_DVARS","url": "resources/DATA/files/QC/test1_MR_V1_faln_dbnd_xr3d_atl_g7_bpss_resid.gif","title": "Post-fcMRI preprocessing DVARS"}
+		   ]
+}
+},
+{"section": {
+		"title":"registration",
+		"header":"registration sub title",
+		"datatable":{
+			"columns":[
+			    {"title":"Label one", "field":"label"},
+			    {"title":"Label Two", "field":"label2"}
+			  ],
+			  "rows":[
+				  {"label":"value","label2":"value"},
+		    	  {"label":"value","label2":"value"},
+				  {"label":"value","label2":"value"},
+				  {"label":"value","label2":"value"}
+			]
+		},
+        "images": [
+           {"id": "mpr_on_atlas","url": "resources/DATA/files/QC/test1_MR_V1_mpr.gif","title": "MPRAGE on atlas (mosaic)"},
+           {"id": "mpr_on_atlas","url": "resources/DATA/files/QC/test1_MR_V1_mpr.gif","title": "MPRAGE on atlas (mosaic)"},
+           {"id": "mpr_on_atlas","url": "resources/DATA/files/QC/test1_MR_V1_mpr.gif","title": "MPRAGE on atlas (mosaic)"},
+           {"id": "mpr_on_atlas","url": "resources/DATA/files/QC/test1_MR_V1_mpr.gif","title": "MPRAGE on atlas (mosaic)"},
+           {"id": "mpr_on_atlas","url": "resources/DATA/files/QC/test1_MR_V1_mpr.gif","title": "MPRAGE on atlas (mosaic)"}
+		   ]
+}
+}
+]
+}
+	           
+			
